@@ -31,13 +31,33 @@ function startGame() { }
  */
 
 function endGame(event) { }
-
-startGame();
+/**
+ * Displays start state of game
+ */
+function startGame() {
+    statusDisplay.textContent = "Choose!";
+    buttons.forEach((button, index) => {
+        button.textContent = moveList[index];
+        button.style.display = "inline-block";
+        buttons[index].addEventListener("click", endGame);
+    });
+    moveDisplays.forEach((moveDisplay) => (moveDisplay.style.display = "none"));
+}
 // Similar to how variables allow us to organize our data, functions allow us to organize our code.
 
 let startGame = (argument) => {
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].textContent = moveList[i];
+        buttons[i].style.display = "inline-block";
+    }
     return;
 };
+
+let statusDisplay = document.querySelector('#status-head');
+let moveDisplays = document.querySelectorAll('.move-display h2');
+let buttons = document.querySelectorAll('button');
+statusDisplay.textContent = 'Choose!';
+
 
 
 
